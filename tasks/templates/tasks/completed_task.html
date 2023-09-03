@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class=" container pt-5 ">
+    <div class="col-lg-10 mx-auto shadow">
+        <div class="pt-0">
+            <h1 class="text-center bg-info text-white mb-4 py-1">Completed Tasks</h1>
+            <div class="p-4">
+                {% if task %}
+                <table class="table table-bordered pl-3">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Due-Date</th>
+                            <th scope="col">Category</th>
+                            <th scope="col">Priority</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for todo in task %}
+                            <tr>
+                                <td>{{forloop.counter}}</td>
+                                <td>{{todo.title}}</td>
+                                <td>{{todo.description}}</td>
+                                <td>{{todo.due_date}}</td>
+                                <td>{{todo.category}}</td>
+                                <td>{{todo.priority}}</td>
+                                <td>{{todo.status}}</td>
+                                <td><a class="btn btn-danger btn-sm" href="{% url 'del_task' id=todo.id %}">Delete</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <h1>No Data Found</h1>
+            {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock %}

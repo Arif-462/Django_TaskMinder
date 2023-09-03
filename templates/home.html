@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block body %}
+
+<div class="container pt-0">
+    <div class="col-lg-12 mx-auto shadow py-10 bg-success">
+        <div class="alert alert-success p-4 text-center"> 
+            <h2>Welcome To TaskMinder </h2>
+        </div>        
+        <div class="p-2 ">           
+
+            <div class="row">
+                <div class="col-sm-6 mb-0 mb-sm-0">
+                  <div class="card">
+                    <div class="card-body">
+                       <div>
+                        <img style="width: 580px; " src="{% static '/images/com.png' %}" alt="">
+                       </div>
+                      <h5 class="card-title">TODO</h5>
+                      <p class="card-text "> A to do list is that it will help you stay organised.
+                        Having a list of everything you need to do written down in one place means you shouldn’t 
+                        forget anything important. By prioritising the tasks in the list you plan the order in which you’re going to do 
+                        them and can quickly see what needs your immediate attention and what tasks you can leave until a little later.</p>
+                      <a href="{% url 'profile' %}" class="btn btn-primary">Profile</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="card">
+                    <div class="card-body">
+                        <img style="width: 586px;"  src="{% static '/images/note.png'%}" alt="">
+                      <h5 class="card-title">TO DO List</h5>
+                      <p class="card-text pb-4">All it takes is just a few minutes every day to keep a to do list up to date. With a to do list, 
+                        you can complete goals without wasting time trying to figure out priorities. Your productivity will increase,
+                         you won’t forget things, your time management will improve and you’ll be able to manage your tasks more effectively.</p>
+                      <a href="{% url 'show_task' %}" class="btn btn-primary">Task List</a>
+                    </div>
+                  </div>
+                </div>
+              </div>       
+
+        </div>   
+    </div>
+</div>
+
+{% endblock %}

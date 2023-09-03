@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+
+
+
+{% block body %}
+
+
+    
+    <div class="container pt-4">
+        
+        <div class="col-lg-8 mx-auto shadow p-0">
+
+            <div class="alert alert-info text-center p-4 center"> 
+                <h2>Update Your Account</h2>
+
+                {% if messages %}
+                    {% for m in messages %}
+                        <small{% if m.tags %} class="{{m.tags}}" {% endif %}>{{m}}</small> 
+                    {% endfor %}
+                {% endif %}
+            </div>
+            
+            <div class="p-5">                
+                <form method="post"  novalidate>
+                    {% csrf_token %}
+                    
+                    <!-- {{form | crispy}} -->
+                    {% for fm in form %}
+                    {{fm.label_tag}}
+                    {{fm}}
+                    {{fm.errors|striptags}}
+                    <br>
+                    {% endfor %}                   
+                    
+                    <button class="btn btn-primary" type="submit">Update Account</button>
+                   
+                </form>         
+            </div>
+            
+        
+        </div>
+    </div>
+
+
+
+
+{% endblock  %}
