@@ -49,7 +49,7 @@
             {% if request.user.is_authenticated %}
 
             <ul style="margin-lef:auto; margin-right:80px" class="navbar-nav">
-                <small style="margin-right:40px; padding-top:10px"  class="title text-muted">Welcome {{request.user.first_name}}</small>                
+                <small style="margin-right:40px; padding-top:10px"  class="title text-info">Wellcome {{request.user.first_name}}</small>                
                 <li class="nav-item mr-5">
                 <a class="nav-link active" href="{% url 'profile' %}">Profile</a>
                 </li>

@@ -6,7 +6,7 @@ from django.contrib.auth import login, logout, authenticate
 
 
 
-
+# user registration herte
 def register(request):
     form = RegistrationForm()
     if request.method =='POST':
@@ -15,32 +15,34 @@ def register(request):
             messages.success(request, 'Account Created Succesfully')
             form.save()
             # print(form.cleaned_data)                      
-            return redirect('add_task')
+            return redirect('home')
     else:
         form = RegistrationForm()              
     return render(request, 'accounts/register.html',{'form':form})
 
-
-def user_login(request):
-    form = AuthenticationForm() 
-    if request.method =='POST':
-        form = AuthenticationForm(request=request, data=request.POST)
+# user login here
+def user_login(request): 
+    if request.method =='POST':        
+        form = AuthenticationForm(request=request, data=request.POST)        
         if form.is_valid():
             name = form.cleaned_data['username']
             userpass = form.cleaned_data['password']
             user = authenticate(username=name, password=userpass)
             if user is not None:
                 login(request,user)            
-                return redirect('show_task')
+                return redirect('home')
     else:
         form = AuthenticationForm()
     return render(request, 'accounts/login.html',{'form':form} )
 
+
+# user log out here
 def user_logout(request):
     logout(request)
     return redirect('login')
 
 
+# user update his/her profile
 def profile(request):   
     if request.user.is_authenticated:
         if request.method == 'POST':
@@ -48,7 +50,7 @@ def profile(request):
             if form.is_valid():
                 messages.success(request, 'Account Updated Succesfully')
                 form.save()
-                return redirect('show_task')
+                return redirect('home')
         else:
             form = updateForm(instance = request.user)
         return render(request, 'accounts/profile.html',{'form':form})

@@ -12,7 +12,15 @@
         <div class="p-2 text-bold">
             <form action="" method="POST">
                 {% csrf_token %}               
-                {{form|crispy}}
+                {% comment %} {{form|crispy}} {% endcomment %}
+
+                    <!-- {{form | crispy}} -->
+                    {% for fm in form %}
+                    <p class="fw-bold mb-0">{{fm.label_tag}}</p>
+                    {{fm}}
+                    {% comment %} {{fm.errors|striptags}} {% endcomment %}
+                    <br>
+                    {% endfor %} 
                <hr>            
                 <input class="btn btn-info" type="submit" value="Add Task">
             </form>

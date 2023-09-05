@@ -28,7 +28,7 @@
                     
                     <!-- {{form | crispy}} -->
                     {% for fm in form %}
-                    {{fm.label_tag}}
+                    <p class="fw-bold mb-0">{{fm.label_tag}}</p>
                     {{fm}}
                     {{fm.errors|striptags}}
                     <br>

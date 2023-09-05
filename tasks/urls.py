@@ -9,7 +9,7 @@ urlpatterns = [
     path('del_task/<int:id>/', views.delete_task, name = 'del_task'),
     path('complete/<int:id>/', views.complete_status, name = 'complete'),
     path('completed/', views.completed_list, name = 'completed_list'), 
-    path('medium/', views.medium_ca, name = 'medium'), 
+    path('medium/', views.medium_cat, name = 'medium'), 
     path('high/', views.high_cat, name = 'high'), 
     path('low/', views.low_cat, name = 'low'), 
        
